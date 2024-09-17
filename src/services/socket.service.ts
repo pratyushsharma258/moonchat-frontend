@@ -3,7 +3,7 @@ import { Client, IMessage } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 
 @Injectable({
-  providedIn: 'root', // Ensures it's provided at the root level
+  providedIn: 'root',
 })
 export class WebSocketService {
   private stompClient: Client | null = null;
