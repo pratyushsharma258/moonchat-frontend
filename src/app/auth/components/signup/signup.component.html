@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="content-container">
+    img
+  </div>
+  <div class="form-container">
+    <div class="heading-container">
+      <h2>Sign Up to MoonChat</h2>
+      <p>Already have an account?
+      <a routerLink="/auth/login">Log In</a></p>
+    </div>
+    <div class="details-container">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <p-floatLabel>
+          <input id="username" type="text" pInputText [(ngModel)]="this.formData.username" name="username"/>
+          <label for="username">Username</label>
+        </p-floatLabel>
+      </div>
+
+      <div class="form-group">
+        <p-floatLabel>
+          <input id="email" type="email" pInputText [(ngModel)]="this.formData.email" name="email"/>
+          <label for="email">Email</label>
+        </p-floatLabel>
+      </div>
+
+      <div class="form-group">
+        <p-floatLabel>
+          <p-password inputStyleClass="password-input" id="password" [(ngModel)]="this.formData.password" [toggleMask]="true" name="password" />
+          <label for="password">Password</label>
+        </p-floatLabel>
+      </div>
+      <div class="form-group">
+        <p-button label="Sign Up" styleClass="submit-button" type="submit"></p-button>
+      </div>
+    </form>
+    </div>
+  </div>
+  <p-toast/>
+</div>
