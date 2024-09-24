@@ -1,5 +1,6 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
 
 html, body {
   height: 100vh;
@@ -14,4 +15,14 @@ html, body {
 
 .password-input {
   width : 25vw;
+}
+
+.sidebar-button{
+  width : 100%;
+  border-radius: 0;
+}
+
+.chat-submit-button{
+  border-radius: 40px;
+  width : 2vw;
 }

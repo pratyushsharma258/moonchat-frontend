@@ -4,7 +4,8 @@ import {AppComponent} from "./app.component";
 
 const routes: Routes = [
   { path: '', component: AppComponent },
-  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) }
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+  { path: 'chat', loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule) }
 ];
 
 @NgModule({

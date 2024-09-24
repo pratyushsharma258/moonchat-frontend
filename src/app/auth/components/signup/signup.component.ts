@@ -23,7 +23,8 @@ export class SignupComponent {
         next: (response) => {
           this.messageService.add({severity: 'success', summary: 'Success', detail: 'User registered successfully!'});
           this.formData = {};
-          this.router.navigate(['/auth/login']).then(r => {});
+          this.router.navigate(['/auth/login']).then(r => {
+          });
         },
         error: ({error}) => {
           this.formData = {};

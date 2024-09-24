@@ -1,2 +1,34 @@
-<p-toast/>
-<p>login works!</p>
+<div class="container">
+  <div class="content-container">
+    img
+  </div>
+  <div class="form-container">
+    <div class="heading-container">
+      <h2>Log in to MoonChat</h2>
+      <p>Don't have an account?
+        <a routerLink="/auth/signup">Sign Up</a></p>
+    </div>
+    <div class="details-container">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <p-floatLabel>
+            <input id="username" type="text" pInputText [(ngModel)]="this.formData.username" name="username"/>
+            <label for="username">Username</label>
+          </p-floatLabel>
+        </div>
+
+        <div class="form-group">
+          <p-floatLabel>
+            <p-password inputStyleClass="password-input" id="password" [(ngModel)]="this.formData.password" [toggleMask]="true" name="password" />
+            <label for="password">Password</label>
+          </p-floatLabel>
+        </div>
+        <div class="form-group">
+          <p-button label="Log In" styleClass="submit-button" type="submit"/>
+        </div>
+      </form>
+    </div>
+  </div>
+  <p-toast/>
+</div>
+

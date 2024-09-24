@@ -1,0 +1,27 @@
+<div class="main-container">
+  <div class="sidebar-container">
+    <p-sidebar [(visible)]="sidebarVisible">
+      <h3>Sidebar</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+    </p-sidebar>
+    <p-button (onClick)="sidebarVisible = true" icon="pi pi-bars" styleClass="sidebar-button"/>
+  </div>
+  <div class="user-container">
+    Users
+  </div>
+  <div class="chat-container">
+    <div class="receiver-info-container">User</div>
+    <div class="background-container" *ngIf="messages.length==0">Background</div>
+    <div class="message-container" *ngIf="messages.length!=0">Messages Sent</div>
+    <div class="input-container">
+      <form class="form-input-container" (ngSubmit)="onSubmit()">
+        <input id="message" type="text" pInputText [(ngModel)]="this.message" name="message" placeholder="Type a message...."/>
+        <p-button styleClass="chat-submit-button" icon="pi pi-send" type="submit" size="small" />
+      </form>
+    </div>
+  </div>
+</div>

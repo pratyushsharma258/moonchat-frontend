@@ -1,25 +1,27 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import {HTTP_INTERCEPTORS, provideHttpClient} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {FormsModule} from "@angular/forms";
-import {provideHttpClient, withInterceptors} from "@angular/common/http";
-import {NavbarComponent} from './components/navbar/navbar.component';
+import {AuthService} from './services/auth/auth.service';
+import {AuthInterceptor} from './services/auth/interceptors/auth.interceptor';
+import {MessageService} from 'primeng/api';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     BrowserAnimationsModule,
   ],
   providers: [
-    provideHttpClient()
+    AuthService,
+    MessageService,
+    provideHttpClient(),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
