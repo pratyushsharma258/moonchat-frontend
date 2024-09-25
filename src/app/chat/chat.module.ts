@@ -10,6 +10,8 @@ import {FloatLabelModule} from "primeng/floatlabel";
 import {AuthInterceptor} from "../services/auth/interceptors/auth.interceptor";
 import {InputTextareaModule} from "primeng/inputtextarea";
 import {InputTextModule} from "primeng/inputtext";
+import {OverlayPanelModule} from "primeng/overlaypanel";
+import {AvatarModule} from "primeng/avatar";
 
 const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
@@ -25,7 +27,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SidebarModule,
     ButtonModule,
-    InputTextModule
+    InputTextModule,
+    OverlayPanelModule,
+    AvatarModule
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),

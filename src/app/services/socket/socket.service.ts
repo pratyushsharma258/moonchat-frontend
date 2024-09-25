@@ -9,7 +9,7 @@ export class WebSocketService {
   private stompClient: Client | null = null;
   private connected = false;
 
-  connect(url: string): void {
+  connect(url: string, endpoints: string[], messageHandler: (message: IMessage) => void): void {
     this.stompClient = new Client({
       webSocketFactory: () => new SockJS(url),
       reconnectDelay: 5000,
@@ -24,9 +24,12 @@ export class WebSocketService {
       console.log('Connected: ' + frame);
       this.connected = true;
 
-      this.stompClient?.subscribe('/topic/messages', (message: IMessage) => {
-        console.log('Received message: ', message.body);
+      endpoints.forEach(endpoint => {
+        this.stompClient?.subscribe(endpoint, (message: IMessage) => {
+          messageHandler(message);
+        });
       });
+
     };
 
     this.stompClient.onDisconnect = () => {

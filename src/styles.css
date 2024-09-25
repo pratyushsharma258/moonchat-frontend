@@ -9,20 +9,28 @@ html, body {
   font-family: Arial, sans-serif;
 }
 
+.p-button {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+}
+
 .submit-button {
-  width : 25vw;
+  width: 25vw;
 }
 
 .password-input {
-  width : 25vw;
+  width: 25vw;
 }
 
-.sidebar-button{
-  width : 100%;
+.sidebar-button {
+  width: 100%;
   border-radius: 0;
+
 }
 
-.chat-submit-button{
+.chat-submit-button {
   border-radius: 40px;
-  width : 2vw;
+  width: 2vw;
 }
+

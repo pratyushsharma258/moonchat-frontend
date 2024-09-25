@@ -12,15 +12,15 @@ export class AppComponent {
 
   constructor(private webSocketService: WebSocketService) {}
 
-  connect(): void {
-    this.webSocketService.connect('http://localhost:8080/ws');
-  }
-
-  disconnect(): void {
-    this.webSocketService.disconnect();
-  }
-
-  sendMessage(message: string) {
-    this.webSocketService.sendMessage('/app/chat/send', JSON.stringify({ type: 'CHAT', content: message, sender: 'user' }));
-  }
+  // connect(): void {
+  //   this.webSocketService.connect('http://localhost:8080/ws');
+  // }
+  //
+  // disconnect(): void {
+  //   this.webSocketService.disconnect();
+  // }
+  //
+  // sendMessage(message: string) {
+  //   this.webSocketService.sendMessage('/app/chat/send', JSON.stringify({ type: 'CHAT', content: message, sender: 'user' }));
+  // }
 }

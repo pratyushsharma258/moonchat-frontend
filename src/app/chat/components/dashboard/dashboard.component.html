@@ -1,26 +1,44 @@
 <div class="main-container">
   <div class="sidebar-container">
-    <p-sidebar [(visible)]="sidebarVisible">
-      <h3>Sidebar</h3>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation laboris nisi ut aliquip ex ea commodo consequat.
-      </p>
-    </p-sidebar>
-    <p-button (onClick)="sidebarVisible = true" icon="pi pi-bars" styleClass="sidebar-button"/>
+    <div>
+      <p-sidebar [(visible)]="sidebarVisible">
+        <h3>Sidebar</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua.
+          Ut enim ad minim veniam, quis nostrud exercitation laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </p-sidebar>
+      <p-button (onClick)="sidebarVisible = true" icon="pi pi-bars" styleClass="sidebar-button"/>
+    </div>
+    <div class="profile-panel-container">
+      <p-button (onClick)="op.toggle($event)" icon="pi pi-user" styleClass="sidebar-button"/>
+      <p-overlayPanel #op showCloseIcon="true">
+        <div class="profile-panel">
+          <h2>Welcome {{this.userDetails.username}}</h2>
+          <p>Email: {{this.userDetails.email}}</p>
+          <p-button (onClick)="logOut()" label="Log Out"/>
+        </div>
+      </p-overlayPanel>
+    </div>
   </div>
   <div class="user-container">
-    Users
+    <div *ngFor="let user of users" class="user-item" (click)="setCurrentUser(user)">
+      <p-avatar class="user-badge">{{user.username?.charAt(0)?.toUpperCase()}}</p-avatar>
+      <span class="user-name">{{user.username}}</span>
+    </div>
   </div>
   <div class="chat-container">
-    <div class="receiver-info-container">User</div>
+    <div class="receiver-info-container">
+      {{this.currentUser.username}}
+    </div>
     <div class="background-container" *ngIf="messages.length==0">Background</div>
     <div class="message-container" *ngIf="messages.length!=0">Messages Sent</div>
     <div class="input-container">
-      <form class="form-input-container" (ngSubmit)="onSubmit()">
-        <input id="message" type="text" pInputText [(ngModel)]="this.message" name="message" placeholder="Type a message...."/>
-        <p-button styleClass="chat-submit-button" icon="pi pi-send" type="submit" size="small" />
+      <form class="form-input-container" (ngSubmit)="onSubmit()" autocomplete="off">
+        <input id="message" type="text" pInputText [(ngModel)]="this.message" name="message"
+               placeholder="Type a message...."/>
+        <p-button styleClass="chat-submit-button" icon="pi pi-send" type="submit" size="small"/>
       </form>
     </div>
   </div>
