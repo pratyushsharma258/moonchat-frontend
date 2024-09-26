@@ -59,4 +59,12 @@ export class WebSocketService {
     }
   }
 
+  getSessionId(): string | null {
+    if (this.stompClient && this.stompClient.webSocket) {
+      const url = this.stompClient.webSocket.url;
+      const sessionId = url.substring(url.lastIndexOf('/') + 1);
+      return sessionId;
+    }
+    return null;
+  }
 }

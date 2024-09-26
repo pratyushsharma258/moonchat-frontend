@@ -31,14 +31,6 @@
   width: 72%;
 }
 
-.message-container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  overflow-y: auto;
-  padding: 10px;
-}
-
 .receiver-info-container {
   display: flex;
   flex-direction: row;
@@ -109,5 +101,121 @@
   align-items: center;
   padding: 10px;
   background-color: burlywood;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  width: 100%;
+}
+
+.message-container > * {
+  margin-bottom: 10px;
+}
+
+.message-item-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 10px;
+  background-color: darkslategray;
+  min-width:12%;
+  width: max-content;
+  border-radius: 10px;
+  position: relative;
+  margin-left: auto;
+}
+
+.message-item-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  background-color: darkgoldenrod;
+  border-bottom: 1px solid #e0e0e0;
+  width: max-content;
+  position : relative;
+  margin-right: auto;
+}
+
+.message-item-left .message-sender {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+  font-weight : bold;
+  font-size : small;
+}
+
+.message-item-right .message-sender{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: end;
+  width: 100%;
+  font-weight : bold;
+  font-size : small;
+}
+
+.message-item-right .message-timestamp, .message-item-left .message-timestamp{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: end;
+  min-width: 100%;
+  font-size : xx-small;
+  margin-top: 5px;
+}
+
+.message-item-left .message-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+  font-weight : bold;
+  font-size : x-small;
+}
+
+.message-item-right .message-text{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: end;
+  min-width: 100%;
+  font-weight : bold;
+  font-size : small;
+}
+
+.message-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: darkgoldenrod;
+  border-bottom: 1px solid #e0e0e0;
+  width: 100%;
+}
+
+.message-date{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: darkgoldenrod;
+  border-bottom: 1px solid #e0e0e0;
+  width : 15%;
+  font-size : small;
+  position: relative;
+  left : 42.5%;
+  border-radius: 10px;
 }
 

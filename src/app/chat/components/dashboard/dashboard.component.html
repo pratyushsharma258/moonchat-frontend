@@ -15,8 +15,8 @@
       <p-button (onClick)="op.toggle($event)" icon="pi pi-user" styleClass="sidebar-button"/>
       <p-overlayPanel #op showCloseIcon="true">
         <div class="profile-panel">
-          <h2>Welcome {{this.userDetails.username}}</h2>
-          <p>Email: {{this.userDetails.email}}</p>
+          <h2>Welcome {{ this.userDetails.username }}</h2>
+          <p>Email: {{ this.userDetails.email }}</p>
           <p-button (onClick)="logOut()" label="Log Out"/>
         </div>
       </p-overlayPanel>
@@ -24,17 +24,47 @@
   </div>
   <div class="user-container">
     <div *ngFor="let user of users" class="user-item" (click)="setCurrentUser(user)">
-      <p-avatar class="user-badge">{{user.username?.charAt(0)?.toUpperCase()}}</p-avatar>
-      <span class="user-name">{{user.username}}</span>
+      <p-avatar class="user-badge">{{ user.username?.charAt(0)?.toUpperCase() }}</p-avatar>
+      <span class="user-name">{{ user.username }}</span>
     </div>
   </div>
   <div class="chat-container">
     <div class="receiver-info-container">
-      {{this.currentUser.username}}
+      {{ this.currentUser.username }}
     </div>
-    <div class="background-container" *ngIf="messages.length==0">Background</div>
-    <div class="message-container" *ngIf="messages.length!=0">Messages Sent</div>
-    <div class="input-container">
+    <div class="background-container" *ngIf="messages.length==0 || currentUser.username == null">Background</div>
+    <div class="message-container">
+      <ng-container *ngFor="let message of messages; let i = index">
+        <div *ngIf="hasDateChanged(message, messages[i - 1]) && currentUser.username!=null" class="message-date">
+          {{ formatDateTimeToDate(message.sentAt) }}
+        </div>
+        <div class="message-item-reciever" *ngIf="currentUser.username !=null && message.sender === currentUser.username && message.receiver === userDetails.username && message.sender!=message.receiver"
+             [ngClass]="{'message-item-left': true}">
+          <div class="message-content">
+            <div class="message-sender" *ngIf="message.groupId">{{ message.sender }}</div>
+            <div class="message-text">{{ message.content }}</div>
+            <div class="message-timestamp">{{ formatDateTimeToTime(message.sentAt) }}</div>
+          </div>
+        </div>
+        <div class="message-item-sender" *ngIf="currentUser.username !=null && message.sender === userDetails.username && message.receiver === currentUser.username && message.sender!=message.receiver"
+             [ngClass]="{'message-item-right': true}">
+          <div class="message-content">
+            <div class="message-sender" *ngIf="message.groupId">{{ message.sender }}</div>
+            <div class="message-text">{{ message.content }}</div>
+            <div class="message-timestamp">{{ formatDateTimeToTime(message.sentAt) }}</div>
+          </div>
+        </div>
+        <div class="message-item-self" *ngIf="currentUser.username !=null && message.sender === userDetails.username && message.receiver === userDetails.username && message.receiver===currentUser.username"
+             [ngClass]="{'message-item-right': true}">
+          <div class="message-content">
+            <div class="message-sender" *ngIf="message.groupId">{{ message.sender }}</div>
+            <div class="message-text">{{ message.content }}</div>
+            <div class="message-timestamp">{{ formatDateTimeToTime(message.sentAt) }}</div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="input-container" *ngIf="currentUser.username">
       <form class="form-input-container" (ngSubmit)="onSubmit()" autocomplete="off">
         <input id="message" type="text" pInputText [(ngModel)]="this.message" name="message"
                placeholder="Type a message...."/>

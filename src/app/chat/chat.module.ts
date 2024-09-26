@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {RouterModule, Routes} from "@angular/router";
 import {FormsModule} from "@angular/forms";
@@ -33,6 +33,7 @@ const routes: Routes = [
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
+    DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
 })
